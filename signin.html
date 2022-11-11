@@ -70,10 +70,10 @@
         input3.setAttribute("type","submit")
         input3.setAttribute("value","Submit")
         input3.setAttribute("id","signedin")
-        input3.addEventListener("click",loggedin)
+        input3.addEventListener("click",loggein)
        div.append(input1,input2,input3)
 
-          function loggedin(event){
+          function loggein(event){
             event.preventDefault()
             let email=input1.value
             let password= input2.value

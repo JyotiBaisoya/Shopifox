@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap:10px
+        }
+        #container>div{
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            width:100%
+        }
+        #container>div>img{
+            width:100%
+        }
+        #top{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="top"><h1>All types of items</h1></div>
+    
+    <div id="container">
+
+    </div>
+</body>
+<script>
+    let arr=[]
+    let bag=JSON.parse(localStorage.getItem("cart")) || []
+    let url="https://636e56c4182793016f3df30d.mockapi.io/products"
+    async function getData(){
+        try{
+            let res=await fetch(url)
+            let out=await res.json()
+            arr=out
+            getdata(arr)
+        }catch(err){
+            alert (err)
+        }
+    }
+
+    getData()
+
+    function getdata (){
+        arr.forEach(element => {
+            
+            let div=document.createElement("div")
+            let img=document.createElement("img")
+            img.setAttribute("src","https://www.jcrew.com/s7-img-facade/BN785_EE3850?fmt=jpeg&qlt=90,0&resMode=sharp&op_usm=.1,0,0,0&crop=0,0,0,0&wid=480&hei=480")
+            let name=document.createElement("h4")
+            name.innerText=element.name
+            let description=document.createElement("p")
+            description.innerText=element.description
+            let price=document.createElement("p")
+            price.innerText=element.price
+            let button =document.createElement("button")
+            button.innerText="Add to cart"
+            button.addEventListener("click",function cart(){
+                
+                bag.push(element)
+                localStorage.setItem("cart",JSON.stringify(bag))
+            })
+
+            document.querySelector("#container").append(div)
+            div.append(img,name,description,price,button)
+
+        });
+       
+
+        
+
+    }
+</script>
+</html>
