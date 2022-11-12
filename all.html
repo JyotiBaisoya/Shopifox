@@ -25,6 +25,14 @@
 </head>
 <body>
     <div id="top"><h1>All types of items</h1></div>
+    <select id="filter">
+      <option value="">TYPE</option>
+      <option value="Tasty Granite Soap">soap</option>
+      <option value="Practical Steel Cheese">cheese</option>
+      <option value="Elegant Metal Table">Table</option>
+      
+    </select>
+    <input id="search"  placeholder="Search"/>
     
     <div id="container">
 
@@ -47,7 +55,8 @@
 
     getData()
 
-    function getdata (){
+    function getdata (arr){
+        document.querySelector("#container").innerHTML=""
         arr.forEach(element => {
             
             let div=document.createElement("div")
@@ -75,6 +84,27 @@
 
         
 
+    }
+    document.querySelector("#filter").addEventListener("change",filtereddata)
+           
+    function filtereddata(){
+
+        let selected=document.querySelector("#filter").value
+        let filtereddata=bag.filter(function(element){
+            return element.name==selected
+        })
+        console.log(filtereddata)
+        getdata(filtereddata)
+    }
+
+    document.querySelector("#search").addEventListener("input",searched)
+    function searched(){
+        let q=document.querySelector("input").value
+        let newData=arr.filter(function(element){
+            return element.name.toLowerCase().includes(q.toLowerCase())
+        })
+        
+        getdata(newData)
     }
 </script>
 </html>

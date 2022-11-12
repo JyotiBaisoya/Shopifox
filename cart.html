@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+        width:100%;
+        display:grid;
+        grid-template-columns: repeat(4,1fr);
+        gap:10px;
+
+      }
+      #container>div>img{
+        width:100%
+      }
+    </style>
+</head>
+<body>
+    <div id="container">
+        
+    </div>
+</body>
+<script>
+    let arr=JSON.parse(localStorage.getItem("cart"))||[]
+
+    function displayCard (arr){
+        arr.forEach(element => {
+         let div=document.createElement("div")
+        let image=document.createElement("img")
+        image.setAttribute("src","https://www.jcrew.com/s7-img-facade/BN785_EE3850?fmt=jpeg&qlt=90,0&resMode=sharp&op_usm=.1,0,0,0&crop=0,0,0,0&wid=480&hei=480")
+        let name=document.createElement("h4")
+        name.innerText=element.name
+        let description=document.createElement("p")
+        description.innerText=element.description
+        let price=document.createElement("p")
+        price.innerText=element.price
+        div.append(image,name,description,price)
+        document.querySelector("#container").append(div)
+        });
+      
+
+    }
+    displayCard(arr)
+</script>
+</html>
