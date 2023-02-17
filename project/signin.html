@@ -97,13 +97,15 @@
     document.querySelector("#submit").addEventListener("click",loggedin)
     function loggedin(event){
       event.preventDefault()
-    let x=document.querySelector("#mail").value
-    let y=document.querySelector("#pass").value
-    arr.forEach(element => {
-       if(element.email==x && element.password==y){
-        alert ("loggedin Successful")
-       }
-    });
+      let x=document.querySelector("#mail").value
+      let y=document.querySelector("#pass").value
+      arr.forEach(element => {
+        if(element.email==x && element.password==y){
+          alert ("loggedin Successful")
+        }else{
+          alert ("wrong credentials")
+        }
+      });
     }
     
    
