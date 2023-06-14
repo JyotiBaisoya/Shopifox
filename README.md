@@ -8,5 +8,13 @@
  --> User can see all the products
  --> User can add products to their cart
 
+ # screenshots
+
+  --Sign In
+ ![clean signin](https://github.com/JyotiBaisoya/clone-of-e-commerce-website/assets/112819979/fdf93786-fe6e-4041-80c3-7905003ee705)
+
+  --Sign Up
+![clean signup](https://github.com/JyotiBaisoya/clone-of-e-commerce-website/assets/112819979/e6957c07-6b9e-4c4c-aa41-165b45106491)
+
  
  
