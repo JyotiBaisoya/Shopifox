@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp</title>
+    <style>
+        
+  #all-container{
+    display:flex;
+    margin:auto;
+    margin-top:50px
+  }
+      #container{
+        width:50%;
+        margin-left:30px;
+        height:600px;
+        
+      }
+      #inside-container{
+        width:80%;
+        padding:20px;
+        
+        margin:auto
+      }
+      #inside-container>form>input{
+        margin-top: 15px;
+        height:30px;
+        width:80%;
+        border-radius: 5px;
+        
+        
+      }
+      #inside-container>form{
+        margin:20px
+      }
+      
+      #inside-container>form>button{
+        background-color: blue;
+        color:white
+      }
+    </style>
+</head>
+<body>
+    <div id="all-container">
+    
+        <div id="container">
+         
+            <div id="inside-container">
+                  <h2>Register</h2>
+                  <hr/>
+                <form id="form">
+                    <label><b>Enter Your Name:</b></label>
+                    <input id="name" type="text"  placeholder="Enter your name" required="true"/>
+                    <hr/>
+                  <label><b>Enter Your Email:</b></label>
+                    <input id="mail" type="text"  placeholder="Enter your email" required="true"/>
+                  <hr/>
+  
+                    <label><b>Enter Your Password:</b></label>
+                    <input id="pass" type="password" placeholder="Password" required="true"/>
+                  <hr/>
+                    <input id="submit" type=submit value="Submit" />
+                  
+                   
+                   
+                </form>
+               
+            </div>
+            
+        </div>
+        <div>
+          <img src="https://app.instashipin.com/7abd18254710f5e94b3827a6d9a3d5c1.png"/>
+        </div>
+     </div>
+   
+      
+</body>
+<script>
+     let arr=JSON.parse(localStorage.getItem("signin")) || [];
+    let form = document.getElementById("form")
+    form.addEventListener("submit",handleRegister)
+
+    function handleRegister(e){
+       e.preventDefault();
+       let name = document.getElementById("name").value;
+       let email = document.getElementById("mail").value;
+       let pass = document.getElementById("pass").value;
+       let obj={name,email,pass};
+       arr.push(obj)
+       localStorage.setItem("signin",JSON.stringify(arr))
+       alert("Welcome, You are successfully registered");
+       window.location="./signin.html"
+
+       console.log(obj)
+    }
+
+</script>
+</html>

@@ -13,7 +13,8 @@
         }
         #container>div{
             box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-            width:100%
+            width:100%;
+            padding:10px
         }
         #container>div>img{
             width:100%
@@ -21,11 +22,28 @@
         #top{
             text-align: center;
         }
+
+        #container div img{
+            width:200px
+        }
+
+        #filter{
+            width:150px;
+            border-radius: 5px;
+            height:20px
+        }
+        #search{
+
+            border-radius:5px;
+            height:20px
+        }
     </style>
 </head>
 <body>
     <div id="top"><h1>All types of items</h1></div>
+    <h4>Filter & Search the Products:</h4>
     <select id="filter">
+
       <option value="">TYPE</option>
       <option value="Tasty Granite Soap">soap</option>
       <option value="Practical Steel Cheese">cheese</option>
@@ -41,13 +59,15 @@
 <script>
     let arr=[]
     let bag=JSON.parse(localStorage.getItem("cart")) || []
-    let url="https://636e56c4182793016f3df30d.mockapi.io/products"
+    let url="https://fakestoreapi.com/products"
     async function getData(){
         try{
             let res=await fetch(url)
             let out=await res.json()
             arr=out
+            console.log(arr)
             getdata(arr)
+
         }catch(err){
             alert (err)
         }
@@ -61,19 +81,20 @@
             
             let div=document.createElement("div")
             let img=document.createElement("img")
-            img.setAttribute("src","https://www.jcrew.com/s7-img-facade/BN785_EE3850?fmt=jpeg&qlt=90,0&resMode=sharp&op_usm=.1,0,0,0&crop=0,0,0,0&wid=480&hei=480")
+            img.setAttribute("src",`${element.image}`)
             let name=document.createElement("h4")
-            name.innerText=element.name
+            name.innerText=element.title
             let description=document.createElement("p")
-            description.innerText=element.description
+            description.innerText=`Description: ${element.description}`
             let price=document.createElement("p")
-            price.innerText=element.price
+            price.innerText=`Price:${element.price}`
             let button =document.createElement("button")
             button.innerText="Add to cart"
             button.addEventListener("click",function cart(){
                 
                 bag.push(element)
                 localStorage.setItem("cart",JSON.stringify(bag))
+                alert("Product is successfully added to cart")
             })
 
             document.querySelector("#container").append(div)
