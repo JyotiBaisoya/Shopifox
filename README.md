@@ -16,5 +16,13 @@
   --Sign Up
 ![clean signup](https://github.com/JyotiBaisoya/clone-of-e-commerce-website/assets/112819979/e6957c07-6b9e-4c4c-aa41-165b45106491)
 
+  --Home Page 
+  
+![clean home](https://github.com/JyotiBaisoya/clone-of-e-commerce-website/assets/112819979/6398762d-b821-419b-9991-dfa671caa675)
+
+# Tech Stacks
+
+HTML,CSS,Javascript
+
  
  
